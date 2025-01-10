@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rolling-update-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rolling-update-app
+  template:
+    metadata:
+      labels:
+        app: rolling-update-app
+    spec:
+      containers:
+      - name: rolling-update-container
+        image: pratham0100/custom-app:v1
+        ports:
+        - containerPort: 9090
